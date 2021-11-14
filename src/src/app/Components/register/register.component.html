@@ -1,0 +1,54 @@
+<div class="foot">
+    <div class="signup-form">
+        <form>
+          <div style="text-align: center;"><img src="assets/img/accolite.PNG"></div>
+            <br>
+            <h2>Sign Up</h2>
+            <div class="form-group">
+                <input type="text" class="form-control" name="name" placeholder="Name" [(ngModel)]="name">
+                <div *ngIf="nameInvalid" class="alert alert-danger">Name is required.</div>
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control" name="id" placeholder="Accolite Id" [(ngModel)]="id">
+                <div *ngIf="idInvalid" class="alert alert-danger">ID is required.</div>
+            </div>
+            <div class="form-group">
+                <input type="email" class="form-control" name="email" placeholder="Email" [(ngModel)]="email">
+                <div *ngIf="emailInvalid" class="alert alert-danger">Email is required.</div>
+                <div *ngIf="emailWrong" class="alert alert-danger">Use Accolite email address</div>
+            </div>
+            <div class="form-group">
+                <!-- <input type="text" class="form-control" name="location" placeholder="Location" [(ngModel)]="location"> -->
+                <select name="location" id="location" [(ngModel)]="location" class="form-control">
+                  <option value="">Select Location</option>
+                  <option value="Bangalore">Bangalore</option>
+                  <option value="chennai">chennai</option>
+                  <option value="Gurgaon">Gurgaon</option>
+                  <option value="Hyderabad">Hyderabad</option>
+                  <option value="Mumbai">Mumbai</option>
+                  <option value="Mumbai">Other</option>
+                </select>
+                <div *ngIf="locationInvalid" class="alert alert-danger">Location is required.</div>
+            </div>
+
+
+            <div class="form-group">
+                <input type="password" class="form-control" name="password" [(ngModel)]="password" placeholder="Password">
+                <div *ngIf="passwordInvalid" class="alert alert-danger">Password is required.</div>
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control" name="confirm_password" [(ngModel)]="confirmPassword" placeholder="Confirm Password">
+                <div *ngIf="confirmPasswordInvalid" class="alert alert-danger">Confirm Password is required.</div>
+                <div *ngIf="passwordUnmatched" class="alert alert-danger">Password not matched</div>
+            </div>
+
+            <div class="form-group">
+                <button type="button" class="btn btn-info btn-lg btn-block" (click)="register()">Register Now</button>
+                <div *ngIf="buttonMessage" class="alert alert-danger">User exist in database. Try to login.</div>
+            </div>
+
+        </form>
+        <div class="text-center">Already have an account? <a href="/login">Sign in</a></div>
+    </div>
+</div>
+    <app-footer></app-footer>

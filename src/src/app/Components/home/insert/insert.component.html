@@ -1,0 +1,50 @@
+<div class="foot">
+  <app-head></app-head>
+  <div class="mainclass">
+
+    <div class="center">
+    <div class="label">Enter Question</div>
+      <input type="text" [(ngModel)]="question" class="main" placeholder="  Enter your question">
+  </div>
+  <div class="center">
+    <div class="label">Choose Topic</div>
+    <form [formGroup]="dropdownTopic">
+      <select  id="topic"  class="form-control search-slt" formControlName="topicIndex"  name="dropdownTopic" >
+        <option disabled  value="Topic" >Topic Name</option>
+        <option  [ngValue]="i"  *ngFor="let i of topic; index as j">{{i.topicname}}</option>
+        </select>
+      </form>
+      <br>
+      <div class="div1">
+      <input type="text" name="newTopic" [(ngModel)]="newTopic" class="main3" placeholder="  Enter New Topic">
+      <button type="button" (click)="addTopic()" class="btn btn-info btn">Add</button>
+    </div>
+  </div>
+  <div class="center">
+    <div class="label">Choose Keyword</div>
+    <form>
+    <select name="dropdown" [(ngModel)]="choosenKeyword" class="main4" multiple>
+            <option [ngValue]="i" *ngFor="let i of keyword">{{i.name}}</option>
+        </select>
+    </form>
+    <br>
+    <div class="div1">
+    <input type="text" class="main3" [(ngModel)]="newKeyword" placeholder="  Enter New Keyword">
+    <button type="button" (click)="addKeyword()"class="btn btn-info" >Add</button>
+  </div>
+      </div>
+
+      <div class="center">
+        <div *ngIf="showTopicError" class="alert alert-danger">Topic not selected</div>
+        <div *ngIf="showKeywordError" class="alert alert-danger">Keyword not selected</div>
+        <div *ngIf="showQuestionError" class="alert alert-danger">Question not written</div>
+        <div *ngIf="showError" class="alert alert-danger">Question not added</div>
+        <div *ngIf="showSuccess" class="alert alert-success">Question Added Successfully</div>
+        <button type="button" (click)="submit()" class="btn btn-info">Submit</button>
+
+    </div>
+
+  </div>
+  </div>
+
+  <app-footer></app-footer>

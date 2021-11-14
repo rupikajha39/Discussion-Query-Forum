@@ -1,0 +1,66 @@
+<div class="foot">
+<app-head></app-head>
+<h3>Question :- {{ ques.description }}</h3>
+
+<button class="btn btn-info ml-5" type="button" *ngIf="!ques.answeredflag" (click)="answerInput()">
+  Enter a new Answer
+</button>
+&nbsp;
+<button
+[ngClass]="ques.answeredflag ? 'btn btn-success ml-5 mr-5' : 'btn btn-danger ml-5 mr-5'"
+  type="button"
+  *ngIf="ques.userid == userId"
+  (click)="setAnswered()"
+>
+<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check" viewBox="0 0 16 16">
+  <path d="M10.97 4.97a.75.75 0 0 1 1.07 1.05l-3.99 4.99a.75.75 0 0 1-1.08.02L4.324 8.384a.75.75 0 1 1 1.06-1.06l2.094 2.093 3.473-4.425a.267.267 0 0 1 .02-.022z"/>
+</svg>Answered
+</button>
+<div *ngIf="showInput" class="ml-5 mt-3">
+  <textarea
+    class="form-control mb-3"
+    name="answer"
+    [(ngModel)]="newAnswer"
+    id="exampleFormControlTextarea1"
+    rows="3"
+  ></textarea>
+  <div *ngIf="showError" class="alert alert-danger">Answer box empty.</div>
+  <div *ngIf="showSuccess" class="alert alert-success">Answer added</div>
+  <button type="button" class="btn btn-info mr-3" (click)="saveAnswer()">
+    Save Answer
+  </button>
+  <button type="button" class="btn btn-info" (click)="resetAnswer()">
+    Reset
+  </button>
+</div>
+
+<div *ngFor="let ans of answer; index as j" class="card m-5">
+  <div class="card-header">Answer {{ j + 1 }}</div>
+  <div class="card-body">
+    <p class="card-text">{{ ans.description }}</p>
+    <div>
+      <button
+        type="button"
+        class="btn btn-dark buttoncolor"
+        (click)="showEdit(j)"
+        name="edit"
+        *ngIf="ans.userid == userId && ques.answeredflag == false"
+      >
+        Edit</button
+      >&nbsp;
+      <button
+        type="button"
+        class="btn btn-dark buttoncolor"
+        (click)="deleteAnswer(j)"
+        *ngIf="ans.userid == userId && ques.answeredflag == false"
+      >
+        Delete
+      </button>
+
+    </div>
+    <div class="timestamp">Posted on - {{ ans.timestamp }}</div>
+  </div>
+</div>
+</div>
+
+<app-footer></app-footer>

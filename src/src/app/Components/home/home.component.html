@@ -1,0 +1,49 @@
+
+<div class="foot">
+  <app-head></app-head>
+
+  <div class="main">
+    <div class="row1">
+      <input type="text" name="question" [(ngModel)]="question"  class="form-control search-slt" placeholder="Enter Question or keyword">
+    </div>
+
+    <div class="row1" >
+      <form [formGroup]="dropdownTopic">
+      <select  id="topic"  class="form-control search-slt" formControlName="topicIndex"  name="dropdownTopic" >
+        <option disabled  value="Topic" >Topic Name</option>
+        <option  [ngValue]="i"  *ngFor="let i of topics; index as j">{{i.topicname}}</option>
+        </select>
+      </form>
+  </div>
+    <div class="row1">
+      <form [formGroup]="dropdownQuestion">
+      <select name="dropdownQuestion" formControlName="questionIndex" class="form-control search-slt" >
+        <option value = "All" >All Question</option>
+        <option value="me"  >Question By Me</option>
+    </select>
+  </form>
+    </div>
+    <div class="row1">
+      <button type="button" (click)="search()" class="btn btn-info wrn-btn mr-3">Search</button>
+      
+      <button type="button" (click)="reset()" class="btn btn-info wrn-btn">Reset</button>
+    </div>
+
+  </div>
+
+
+    <div *ngFor="let ques of questionList; index as j" class="card ml-5 mr-5  mb-3">
+      <div class="card-header">
+        Question {{j+1}}
+      </div>
+      <div class="card-body">
+        <h5 class="card-title">{{ques.description}}</h5>
+        <button type="button" *ngFor="let keyword of ques.keywordList" class="btn btn-secondary btn-sm ml-1 rounded-pill" disabled>{{keyword}}</button>&nbsp;
+        <br><br>
+        <a (click)="changeScreen(ques)" class="btn btn-info buttoncolor" >Show Answer</a>
+        <div class="timestamp">Posted on - {{ques.timestamp}}</div>
+      </div>
+</div>
+</div>
+<app-footer></app-footer>
+

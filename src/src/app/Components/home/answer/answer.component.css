@@ -1,0 +1,71 @@
+
+h3{
+  margin-right:6px;
+  margin:2%;
+}
+.que{
+  margin-right:10px;
+}
+.flag {
+  float: right;
+  margin-right: 20px;
+}
+
+.timestamp{
+  /* float: right; */
+  position: absolute;
+  bottom:3px;
+  right:6px;
+  font-size:14px;
+  color: rgb(128, 126, 126);
+}
+.card-header{
+  background-color: #3AAFA9;
+  color: white;
+  font-size: 25px;
+  font-weight: bold;
+}
+.buttoncolor{
+  color:white;
+}
+
+.rate{
+  margin-left:16px;
+  margin-top:8px;
+  font-size:14px;
+  color:lightcoral;
+}
+
+
+/* component */
+
+.star-rating {
+  /* border:solid 1px #ccc; */
+  float: right;
+  /* display:flex;
+  flex-direction: row-reverse; */
+  font-size:1.5em;
+  /* justify-content:space-around; */
+  padding:0 .2em;
+  text-align:center;
+  /* width:5em; */
+}
+
+.star-rating input {
+  display:none;
+}
+
+.star-rating label {
+  color:#ccc;
+  cursor:pointer;
+}
+
+.star-rating :checked ~ label {
+  color:#f90;
+}
+
+.star-rating label:hover,
+.star-rating label:hover ~ label {
+  color:#fc0;
+}
+

@@ -1,0 +1,29 @@
+<div class="foot">
+    <div class="signup-form">
+        <form>
+          <div style="text-align:center;"><h1>Lovely Professional University</h1></div>
+            <br>
+            <h2>Login</h2>
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="LPU Id" name="id" [(ngModel)]="id" required="required">
+                <div *ngIf="idInvalid" class="alert alert-danger">ID is required.</div>
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control" placeholder="Password" name="password" [(ngModel)]="password" required="required">
+                <div *ngIf="passwordInvalid" class="alert alert-danger">Password is required.</div>
+                <div *ngIf="passwordWrong" class="alert alert-danger">Password is wrong.</div>
+
+            </div>
+            <div class="form-group">
+                <button type="button" class="btn btn-info btn-lg btn-block" (click)="login()">Login</button>
+                <div *ngIf="buttonMessage" class="alert alert-danger">User doesn't exist.</div>
+                <br>
+                <div class="text-center alert alert-success">
+                    If you don't have an account
+                </div>
+                <button type="button" class="btn btn-info btn-lg btn-block" routerLink="/register" routerLinkActivate="active">SignUp</button>
+            </div>
+        </form>
+    </div>
+  </div>
+    <app-footer></app-footer>

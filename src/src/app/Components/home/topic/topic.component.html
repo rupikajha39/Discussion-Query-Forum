@@ -1,0 +1,24 @@
+<div class="foot">
+<app-head></app-head>
+
+
+<div class="container">
+  <div class="topic-1">
+    <h3>Subscribed topic</h3>
+    <button (click)="unSub(j)"  *ngFor="let i of subTopics; index as j" type="button" class="btn btn-outline-primary rounded-pill">{{i.topicname}}</button>
+  </div>
+
+
+  <div class="topic-2">
+    <h3>Rest all other topic</h3>
+    <button  (click)="sub(j)" *ngFor="let i of unSubTopics; index as j" type="button" class="btn btn-outline-primary rounded-pill">{{i.topicname}}</button>
+  </div>
+
+  <div class="topic-3">
+    <button type="button" (click)="submit()" class="btn btn-info">Save Changes</button>
+  </div>
+
+
+</div>
+</div>
+<app-footer></app-footer>

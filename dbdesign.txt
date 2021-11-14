@@ -1,0 +1,39 @@
+Table 1 -
+User Table-> UserId,UserName,Email,Password,Location
+
+Table 2 -
+Topic -> TopicId,TopicName,TimeStamp,UserID[Who created this timestamp]
+
+Table 3 -
+Question ->  QuesDesc,AnsweredFlag,QuestionID,UserId[Who has asked the question],TimeStamp,TopicID
+
+Table 4 -
+Answer -> AnsID,AnsDesc,UserId,QuestionID,TimeStamp,isArchived, RatingAvg->[Trigger]
+
+Table 5 -
+rating -> AnsID,Rating,UserId,Timestamp
+
+Table 6 -[Optional]
+Comment -> ID,AnsID,CommentDesc,TimeStamp,UserId
+
+Table 7 -
+Email -> UserId,ReceiverEmail,TimeStamp,isSuccess,Desc,Subject
+
+Table 8 -
+Notification -> ID,Desc,Timestamp
+
+Table 9 -
+NotifyTable -> NotificationId,UserId,Visited
+
+Table 10 -
+UserTopic -> TopicID,UserId
+
+Table 11 -
+Keyword-> Id,Value,Created By, CreatedTimeStamp
+
+Table 12-
+KeywordId,QuestionID
+
+
+
+

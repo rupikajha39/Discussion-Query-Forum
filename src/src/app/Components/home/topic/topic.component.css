@@ -1,0 +1,32 @@
+
+.container{
+  display:flex;
+  flex-direction: column;
+  /* justify-items: stretch; */
+
+  /* justify-content: center;
+  align-content: center;
+  align-items: center; */
+  gap:20px;
+
+
+  margin-top:5%;
+  padding-bottom: 10px;
+
+}
+
+.topic-1,.topic-2{
+  flex:1;
+  margin-bottom:80px;
+  justify-content: flex-start;
+  align-items: flex-start;
+
+}
+
+
+.topic-3{
+  flex:1;
+}
+button{
+  margin:5px;
+}

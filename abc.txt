@@ -1,0 +1,60 @@
+ create database auprojectdatabase1;
+
+use auprojectdatabase1;
+
+create table userinformation (id int primary key,name varchar(45), email varchar(45),password varchar(45),location varchar(20) );
+
+create table topic(topicid int primary key auto_increment,topicname varchar(45), timestamp date,userid int , foreign key(userid) references userinformation(id));
+
+create table question(id int primary key auto_increment,answeredflag boolean, description longtext,timestamp date,userid int , topicid int,foreign key(userid) references userinformation(id),foreign key(topicid) references topic(topicid));
+
+
+create table answer(id int primary key auto_increment, description longtext,userid int, questionid int, timestamp date, isarchive boolean default false,foreign key(userid) references userinformation(id),foreign key(questionid) references question(id));
+
+
+
+create table email(id int primary key auto_increment, remail varchar(45), timestamp date, issuccess varchar(8), description longtext, subject varchar(45),userid int,foreign key(userid) references userinformation(id));
+
+create table notification(id int primary key auto_increment,description longtext, timestamp date,userid int, visited boolean, foreign key(userid) references userinformation(id));
+
+
+create table usertopic (id int primary key auto_increment, topicname varchar(30), topicid int , userid int,foreign key(userid) references userinformation(id),foreign key(topicid) references topic(topicid));
+
+create table keyword(id int primary key auto_increment,name varchar(45), userid int,timestamp date,foreign key(userid) references userinformation(id));
+
+create table keywordquestion (id int primary key auto_increment, keywordid int,questionid int,foreign key(keywordid) references keyword(id),foreign key(questionid) references question(id));
+
+
+delimiter //
+create trigger inserttopic after insert  on topic for each row
+    begin
+    insert into usertopic (userid,topicid,topicname) values(NEW.userid, NEW.topicid,NEW.topicname);
+    end //
+delimiter ;
+
+insert into userinformation(id, name, email, password, location) values (1000, 'Admin', 'admin@lpu.in', 'qwerty', 'Delhi');
+
+-- Insert Topics into Table
+insert into topic(topicname, timestamp, userid) values ('Angular', '2021/02/02', 1000);
+insert into topic(topicname, timestamp, userid) values ('React', '2021/02/02', 1000);
+insert into topic(topicname, timestamp, userid) values ('React Native', '2021/02/02', 1000);
+insert into topic(topicname, timestamp, userid) values ('Java', '2021/02/02', 1000);
+insert into topic(topicname, timestamp, userid) values ('Javascript', '2021/02/02', 1000);
+insert into topic(topicname, timestamp, userid) values ('Spring', '2021/02/02', 1000);
+insert into topic(topicname, timestamp, userid) values ('Hibernate', '2021/02/02', 1000);
+insert into topic(topicname, timestamp, userid) values ('MySQL', '2021/02/02', 1000);
+insert into topic(topicname, timestamp, userid) values ('Git', '2021/02/02', 1000);
+insert into topic(topicname, timestamp, userid) values ('Machine Learning', '2021/02/02', 1000);
+
+
+-- Insert Keywords into table
+insert into keyword(name, timestamp, userid) values ('Form', '2021/02/02', 1000);
+insert into keyword(name, timestamp, userid) values ('React Router', '2021/02/02', 1000);
+insert into keyword(name, timestamp, userid) values ('Routing Module', '2021/02/02', 1000);
+insert into keyword(name, timestamp, userid) values ('FormBuilder', '2021/02/02', 1000);
+insert into keyword(name, timestamp, userid) values ('Searching', '2021/02/02', 1000);
+insert into keyword(name, timestamp, userid) values ('Select Query', '2021/02/02', 1000);
+insert into keyword(name, timestamp, userid) values ('JSON parsing', '2021/02/02', 1000);
+insert into keyword(name, timestamp, userid) values ('JDBC', '2021/02/02', 1000);
+insert into keyword(name, timestamp, userid) values ('Frontend', '2021/02/02', 1000);
+insert into keyword(name, timestamp, userid) values ('Database', '2021/02/02', 1000);
